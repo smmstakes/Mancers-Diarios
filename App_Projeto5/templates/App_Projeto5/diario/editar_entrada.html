@@ -1,0 +1,30 @@
+{% extends 'App_Projeto5/core/base_core.html' %}
+{% block conteudo %}
+
+<div class="container white-backg h-100 p-4">
+  <h1 class="mb-4">Editar Entrada</h1>
+
+  <form class="row g-3 align-items-center" method="POST" action="{% url 'editar_entrada' entrada.id_Diario %}">
+    {% csrf_token %}
+    <div class="col-12">
+      <label for="titulo" class="form-label">Título:</label>
+      <input type="text" id="titulo" name="titulo" value="{{ entrada.titulo }}" class="form-control" required>
+    </div>
+    <div class="col-12">
+      <label for="texto" class="form-label">Texto:</label>
+      <textarea id="texto" name="texto" class="form-control" required>{{ entrada.texto }}</textarea>
+    </div>
+
+    <div class="col-12 text-center">
+      <button type="submit" class="btn btn-primary bg-dark"><strong>Salvar</strong></button>
+      <button type="button" class="btn btn-primary bg-dark" onclick="voltar()"><strong>Voltar</strong></button>
+    </div>
+  </form>
+
+  <script>
+    function voltar() {
+      window.history.back();
+    }
+  </script>
+</div>
+{% endblock %}

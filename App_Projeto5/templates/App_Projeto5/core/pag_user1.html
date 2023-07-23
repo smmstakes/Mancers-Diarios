@@ -1,0 +1,17 @@
+{% extends 'App_Projeto5/core/base_core.html' %}
+{% block conteudo %}
+
+<div class="container white-backg h-100 p-4">
+    <h1 class="mb-4">Seu Diário</h1>
+    <ul class="list-group">
+        <li class="list-group-item">
+            <a class="btn btn-primary bg-dark" href="{% url 'visualizar_entradas' %}">Visualizar Páginas</a>
+        </li>
+        <li class="list-group-item">
+            <a class="btn btn-primary bg-dark" href="{% url 'criar_entrada' %}">Criar Página de Diário</a>
+        </li>
+    </ul>
+</div>
+
+
+{% endblock %}

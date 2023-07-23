@@ -1,0 +1,33 @@
+{% extends 'App_Projeto5/core/base_core.html' %}
+{% block conteudo %}
+
+<div class="container white-backg h-100 p-4">
+  <h1 class="mb-4">Criar Nova Página</h1>
+
+  <form method="POST" action="{% url 'criar_entrada' %}">
+    {% csrf_token %}
+
+    <div class="col-12">
+      <label for="titulo" class="form-label"><strong>Título:</strong></label>
+      <input type="text" id="titulo" name="titulo" class="form-control" required>
+    </div>
+
+    <div class="col-12">
+      <label for="texto" class="form-label"><strong>Texto:</strong></label>
+      <textarea id="texto" name="texto" class="form-control" required></textarea>
+    </div><br>
+
+    <div class="col-12 text-center">
+      <button type="submit" class="btn btn-primary bg-dark"><strong>Salvar</strong></button>
+      <button type="button" class="btn btn-primary bg-dark" onclick="voltar()"><strong>Voltar</strong></button>
+    </div>
+
+    <script>
+      function voltar() {
+        window.history.back();
+      }
+    </script>
+  </form>
+</div>
+
+{% endblock %}

@@ -1,0 +1,44 @@
+{% extends 'App_Projeto5/core/base_core.html' %}
+{% block conteudo %}
+
+<div class="container white-backg h-100 p-4">
+  <h1 class="mb-4">Visualizar Páginas do Diário</h2>
+
+  <button type="button" class="btn btn-primary bg-dark" onclick="criar_entrada()"><strong>Criar Nova Página</strong></button>
+  <button type="button" class="btn btn-primary bg-dark" onclick="voltar()"><strong>Voltar</strong></button><br><br>
+
+  <ul class="list-group">
+    {% for entrada in entradas %}
+    <li class="list-group-item">
+      <h3>{{ entrada.titulo }}</h3>
+      <p>{{ entrada.texto }}</p>
+      <p>Data: {{ entrada.data }}</p>
+      <button type="button" class="btn btn-primary bg-dark" onclick="editar_entrada({{ entrada.id_Diario }})"><strong>Editar</strong></button>
+      <button type="button" class="btn btn-primary bg-dark" onclick="excluir_entrada({{ entrada.id_Diario }})"><strong>Excluir</strong></button>
+    </li><br>
+    {% endfor %}
+  </ul>
+
+
+  <script>
+  function voltar() {
+  window.location.href = "{% url 'pag_inicial' %}";
+  }
+
+  function criar_entrada(){
+    window.location.href = "{% url 'criar_entrada' %}";
+  }
+
+  function excluir_entrada(entrada_id) {
+    if (confirm("Deseja excluir a página selecionada?")){
+      window.location.href = "{% url 'excluir_entrada' 0 %}".replace("0", entrada_id);
+    }
+  }
+
+  function editar_entrada(entrada_id) {
+    window.location.href = "{% url 'editar_entrada' 0 %}".replace("0", entrada_id);
+  }
+
+  </script>
+</div>
+{% endblock %}

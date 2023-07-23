@@ -1,0 +1,44 @@
+{% extends 'App_Projeto5/base/base.html' %}
+{% block conteudo %}
+
+<div class="container log-reg-container d-flex justify-content-center align-items-center mt-5 p-4 flex-column">
+  <h1 class="mb-4 text-top">Login</h1><br>
+    <form class="row g-3 lign-items-center" method="POST" action="{% url 'login_verif' %}">
+      {% csrf_token %}
+      <div class="form-group">
+        <label for="nickname" class="col-sm-2 col-form-label"><strong>Usuário:</strong></label>
+        <input type="text" class="form-control" id="nickname" name="nickname" required>
+      </div><br>
+
+      <div class="form-group">
+        <label for="senha" class="col-sm-2 col-form-label"><strong>Senha:</strong></label>
+        <input type="password" class="form-control" id="senha" name="senha" required>
+      </div><br>
+
+      <div class="class-button text-center">
+        <button type="submit" class="btn btn-primary bg-dark"><strong>Login</strong></button>
+        <button type="button" class="btn btn-primary bg-dark" onclick="register_user()"><strong>Registrar Usuário</strong></button>
+        <button type="button" class="btn btn-primary bg-dark" onclick="voltar()"><strong>Voltar</strong></button><br>
+      </div>
+
+    </form><br><br>
+
+
+    {% if error_message %}
+    <div class="alert alert-danger" role="alert">
+      {{ error_message }}
+      </div>
+    {% endif %}
+  </div>
+
+
+  <script>
+    function register_user() {
+      window.location.href = "{% url 'pag_register' %}";
+    }
+    
+    function voltar() {
+      window.history.back();
+    }
+    </script>
+{% endblock %}
